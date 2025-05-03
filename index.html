@@ -294,33 +294,30 @@
             <h2 class="title is-3">Abstract</h2>
             <div class="content has-text-justified">
               <p>
-                We present the first method capable of photorealistically
-                reconstructing a non-rigidly deforming scene using photos/videos
-                captured casually from mobile phones.
+                Existing methods for talking-head video generation often
+                compromise between lip synchronization and natural head
+                movements. Purely audio-driven methods ensure lip-sync accuracy
+                but produce rigid, unnatural motions, while video-driven methods
+                achieve expressive realism but struggle with accurate lip
+                synchronization.
               </p>
               <p>
-                Our approach augments neural radiance fields (NeRF) by
-                optimizing an additional continuous volumetric deformation field
-                that warps each observed point into a canonical 5D NeRF. We
-                observe that these NeRF-like deformation fields are prone to
-                local minima, and propose a coarse-to-fine optimization method
-                for coordinate-based models that allows for more robust
-                optimization. By adapting principles from geometry processing
-                and physical simulation to NeRF-like models, we propose an
-                elastic regularization of the deformation field that further
-                improves robustness.
+                To address this trade-off, we propose a multimodal framework
+                that combines audio and video inputs. Our system uses pretrained
+                UniTalker and GAGavatar (3D face modeling modules) to initially
+                predict facial motion from audio and extract ground-truth
+                expressions and poses from driving videos. A Transformer-based
+                refinement module, our sole trainable component, integrates
+                these multimodal cues through cross-attention, effectively
+                refining the predicted facial motion to ensure accurate lip
+                synchronization and natural head movements. An Audio-Visual
+                Speech Recognition (AVSR)-derived loss further enforces
+                synchronization accuracy.
               </p>
               <p>
-                We show that <span class="dnerf">Nerfies</span> can turn
-                casually captured selfie photos/videos into deformable NeRF
-                models that allow for photorealistic renderings of the subject
-                from arbitrary viewpoints, which we dub <i>"nerfies"</i>. We
-                evaluate our method by collecting data using a rig with two
-                mobile phones that take time-synchronized photos, yielding
-                train/validation images of the same pose at different
-                viewpoints. We show that our method faithfully reconstructs
-                non-rigidly deforming scenes and reproduces unseen views with
-                high fidelity.
+                Our approach helps enhance the realism and intelligibility of
+                generated talking-head videos, bridging the gap between
+                audio-only and video-only methods.
               </p>
             </div>
           </div>
@@ -332,12 +329,10 @@
           <div class="column is-four-fifths">
             <h2 class="title is-3">Framework</h2>
             <div class="publication-video">
-              <iframe
-                src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
-              ></iframe>
+              <img
+                src="./static/images/framework.png"
+                class="publication-video-poster"
+                alt="Paper video poster."
             </div>
           </div>
         </div>
